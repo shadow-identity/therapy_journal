@@ -1,20 +1,46 @@
 import * as React from 'react';
 import './App.css';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {JournalAppBar} from './JournalAppBar';
+import CardList from './CardList';
+import {getMuiTheme, lightBaseTheme} from 'material-ui/styles';
+import {observable} from 'mobx';
+import {Day} from './interfaces';
+import {days} from './dataMock';
+import DayCard from './DayCard';
+import {inject, observer, Provider} from 'mobx-react';
+import {TypedInject} from './typedInject';
 
-const logo = require('./logo.svg');
+export const journalTheme = getMuiTheme(lightBaseTheme);
 
+export class JournalStore {
+  @observable days: Day[] = days;
+  @observable calendar = true;
+
+  addDay(day: Day) {
+    this.days.push(day);
+  }
+}
+
+// const journal = new JournalStore();
+
+const stores = {journal: new JournalStore()};
+export const typedInject = inject as TypedInject<typeof stores>;
+
+@observer
 class App extends React.Component {
   render() {
+    const content = stores.journal.calendar
+      ? <CardList store={stores.journal}/>
+      : <DayCard store={stores.journal}/>;
+
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </div>
+      <MuiThemeProvider muiTheme={journalTheme}>
+        <Provider {...stores}>
+          <JournalAppBar/>
+          {content}
+        </Provider>
+      </MuiThemeProvider>
     );
   }
 }
