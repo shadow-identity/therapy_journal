@@ -4,24 +4,11 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {JournalAppBar} from './JournalAppBar';
 import CardList from './DaysList';
 import {getMuiTheme, lightBaseTheme} from 'material-ui/styles';
-import {observable} from 'mobx';
-import {Day} from './interfaces';
-import {days} from './dataMock';
 import DayCard from './DayCard';
 import {observer} from 'mobx-react';
+import {journal} from './stores';
 
 export const journalTheme = getMuiTheme(lightBaseTheme);
-
-export class JournalStore {
-  @observable days: Day[] = days;
-  @observable calendar = true;
-
-  addDay(day: Day) {
-    this.days.push(day);
-  }
-}
-
-const journal = new JournalStore();
 
 @observer
 class App extends React.Component {

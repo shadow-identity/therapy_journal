@@ -6,12 +6,13 @@ import DoneIcon from 'material-ui/svg-icons/action/done';
 import {default as Card, CardText, CardTitle} from 'material-ui/Card';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAddIcon from 'material-ui/svg-icons/content/add';
-import {JournalStore} from './App';
+import {JournalStore} from './stores';
 
 @observer
-class CardTable extends React.Component<{store: JournalStore}, {}>  {
+class CardTable extends React.Component<{ store: JournalStore }, {}> {
   render() {
     const days = this.props.store.days;
+
     function allDrugsTaken(drugs: Drug[]) {
       return drugs.reduce((acc, current) => acc && current.isTaken, drugs[0].isTaken === true);
     }
@@ -21,8 +22,8 @@ class CardTable extends React.Component<{store: JournalStore}, {}>  {
     }
 
     const dateRowWidth = '7em';
-    const rows = days.map(day => (
-      <TableRow key={day.date}>
+    const rows = days.map((day, index) => (
+      <TableRow key={index}>
         <TableRowColumn style={{width: dateRowWidth}}>{day.date}</TableRowColumn>
         <TableRowColumn>{allDrugsTaken(day.drugs) ? <DoneIcon/> : null}</TableRowColumn>
         <TableRowColumn>{allTasksDone(day.tasks) ? <DoneIcon/> : null}</TableRowColumn>
@@ -39,7 +40,9 @@ class CardTable extends React.Component<{store: JournalStore}, {}>  {
               Therapy Calendar
               <FloatingActionButton
                 className={'journal-floating-container'}
-                onClick={() => {this.props.store.calendar = false; }}
+                onClick={() => {
+                  this.props.store.calendar = false;
+                }}
               >
                 <ContentAddIcon/>
               </FloatingActionButton>
@@ -47,7 +50,12 @@ class CardTable extends React.Component<{store: JournalStore}, {}>  {
           }
         />
         <CardText>
-          <Table onRowSelection={() => console.log('row selected')}>
+          <Table
+            onRowSelection={(rowNumber: number[]) => {
+              this.props.store.day = days[rowNumber[0]];
+              this.props.store.calendar = false;
+            }}
+          >
             <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
               <TableRow>
                 <TableHeaderColumn style={{width: dateRowWidth}}>Date</TableHeaderColumn>
@@ -57,7 +65,7 @@ class CardTable extends React.Component<{store: JournalStore}, {}>  {
                 <TableHeaderColumn>Dreams</TableHeaderColumn>
               </TableRow>
             </TableHeader>
-            <TableBody displayRowCheckbox={false}>
+            <TableBody displayRowCheckbox={false} showRowHover={true}>
               {rows}
 
             </TableBody>

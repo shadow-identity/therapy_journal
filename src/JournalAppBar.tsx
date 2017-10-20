@@ -7,8 +7,9 @@ import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 import DateRangeIcon from 'material-ui/svg-icons/action/date-range';
 import TodayIcon from 'material-ui/svg-icons/action/today';
 import {black} from 'material-ui/styles/colors';
-import {JournalStore, journalTheme} from './App';
+import {journalTheme} from './App';
 import {observer} from 'mobx-react';
+import {JournalStore} from './stores';
 
 // rm it after IconButton color will be fixed at material-ui
 const buttonColor = () => journalTheme.palette !== undefined ? journalTheme.palette.alternateTextColor : black;

@@ -1,17 +1,17 @@
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import {SentimentIcons} from './Icons';
 import * as React from 'react';
-import {MoodButtonStates, MoodStore} from './Mood';
+import {JournalStore} from '../stores';
 
-export function MoodSelectButton(props: {moodStore: MoodStore}) {
+export function MoodSelectButton(props: {store: JournalStore}) {
   return (
     <FloatingActionButton
 
       onClick={() => {
-        props.moodStore.moodButtonState = MoodButtonStates.menu;
+        props.store.showMoodMenu = true;
       }}
     >
-      {SentimentIcons[props.moodStore.currentMood]}
+      {SentimentIcons[props.store.day.mood]}
     </FloatingActionButton>
   );
 }

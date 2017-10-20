@@ -5,29 +5,31 @@ import TextField from 'material-ui/TextField';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import {grey500} from 'material-ui/styles/colors';
 import {CSSProperties} from 'react';
-import {JournalStore, journalTheme} from './App';
-import {day} from './dataMock';
+import {journalTheme} from './App';
 import {MoodComponent} from './Mood/Mood';
 import FlatButton from 'material-ui/FlatButton';
+import {JournalStore} from './stores';
 
 const disabledColor = () => journalTheme.palette !== undefined ? journalTheme.palette.disabledColor : grey500;
 
 class DayCard extends React.Component<{ store: JournalStore }, {}> {
   render() {
+    let day = this.props.store.day;
     const addElementInvitationStyle: CSSProperties = {
       labelStyle: {color: disabledColor(), fill: disabledColor()},
       iconStyle: {color: disabledColor(), fill: disabledColor()}
     };
 
-    const drugs = day.drugs.map(drug => (
+    const drugs = day.drugs.map((drug, i) => (
       <Checkbox
+        key={i}
         checked={drug.isTaken}
         label={<span>{drug.name}<small>{drug.amount}</small></span>}
       />
     ));
 
-    const tasks = day.tasks.map(task => (
-      <Checkbox checked={task.isDone} label={task.name}/>
+    const tasks = day.tasks.map((task, i) => (
+      <Checkbox key={i} checked={task.isDone} label={task.name}/>
     ));
 
     return (
@@ -36,7 +38,7 @@ class DayCard extends React.Component<{ store: JournalStore }, {}> {
           title={
             <div>
               {day.date}
-              <MoodComponent mood={day.mood}/>
+              <MoodComponent store={this.props.store}/>
             </div>
           }
         />
