@@ -8,8 +8,7 @@ import {observable} from 'mobx';
 import {Day} from './interfaces';
 import {days} from './dataMock';
 import DayCard from './DayCard';
-import {inject, observer, Provider} from 'mobx-react';
-import {TypedInject} from './typedInject';
+import {observer} from 'mobx-react';
 
 export const journalTheme = getMuiTheme(lightBaseTheme);
 
@@ -22,24 +21,19 @@ export class JournalStore {
   }
 }
 
-// const journal = new JournalStore();
-
-const stores = {journal: new JournalStore()};
-export const typedInject = inject as TypedInject<typeof stores>;
+const journal = new JournalStore();
 
 @observer
 class App extends React.Component {
   render() {
-    const content = stores.journal.calendar
-      ? <CardList store={stores.journal}/>
-      : <DayCard store={stores.journal}/>;
+    const content = journal.calendar
+      ? <CardList store={journal}/>
+      : <DayCard store={journal}/>;
 
     return (
       <MuiThemeProvider muiTheme={journalTheme}>
-        <Provider {...stores}>
-          <JournalAppBar/>
+          <JournalAppBar store={journal}/>
           {content}
-        </Provider>
       </MuiThemeProvider>
     );
   }

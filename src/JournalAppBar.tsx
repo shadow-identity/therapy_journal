@@ -4,12 +4,13 @@ import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
 import MenuItem from 'material-ui/MenuItem';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import DateRangeIcon from 'material-ui/svg-icons/action/date-range';
 import {black} from 'material-ui/styles/colors';
-import {journalTheme} from './App';
-import CalendarButton from './CalendarButton';
+import {JournalStore, journalTheme} from './App';
+import {observer} from 'mobx-react';
 
 // rm it after IconButton color will be fixed at material-ui
-export const buttonColor = () => journalTheme.palette !== undefined ? journalTheme.palette.alternateTextColor : black;
+const buttonColor = () => journalTheme.palette !== undefined ? journalTheme.palette.alternateTextColor : black;
 
 const RightMenu = () => (
   <IconMenu
@@ -22,16 +23,20 @@ const RightMenu = () => (
     <MenuItem primaryText="Questionnaire"/>
     <MenuItem primaryText="Save journal"/>
     <MenuItem primaryText="Load journal"/>
-    <MenuItem primaryText="About"/>
+    <MenuItem primaryText="About" />
   </IconMenu>
 );
 
-// const CalendarButton = inject('daysStore')(observer(CalendarButtonInjected));
+const CalendarButton = observer((props: {store: JournalStore}) => (
+  <IconButton onClick={() => props.store.calendar = true}>
+    <DateRangeIcon color={buttonColor()}/>
+  </IconButton>
+));
 
-export const JournalAppBar = () => (
+export const JournalAppBar = observer((props: {store: JournalStore}) => (
   <AppBar
     title="Therapy Journal"
-    iconElementRight={<div><CalendarButton/><RightMenu/></div>}
+    iconElementRight={<div><CalendarButton store={props.store}/><RightMenu/></div>}
     showMenuIconButton={false}
   />
-);
+));
