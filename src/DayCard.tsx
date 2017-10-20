@@ -8,6 +8,7 @@ import {CSSProperties} from 'react';
 import {JournalStore, journalTheme} from './App';
 import {day} from './dataMock';
 import {MoodComponent} from './Mood/Mood';
+import FlatButton from 'material-ui/FlatButton';
 
 const disabledColor = () => journalTheme.palette !== undefined ? journalTheme.palette.disabledColor : grey500;
 
@@ -30,7 +31,7 @@ class DayCard extends React.Component<{ store: JournalStore }, {}> {
     ));
 
     return (
-      <Card style={{'maxWidth': '600px', margin: '10px auto'}}>
+      <Card className={'journal-card'}>
         <CardTitle
           title={
             <div>
@@ -75,7 +76,10 @@ class DayCard extends React.Component<{ store: JournalStore }, {}> {
             defaultValue={day.dream}
           />
         </CardText>
-        <CardActions/>
+        <CardActions>
+          <FlatButton label="Previous day" />
+          <FlatButton label="Next day" />
+        </CardActions>
       </Card>
     );
   }

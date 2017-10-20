@@ -17,22 +17,23 @@ export class MoodStore {
   }
 }
 
-const observableMoodStore = new MoodStore();
+const moodStore = new MoodStore();
 
 @observer
-export class MoodComponent extends React.Component<{mood: Mood}> {
+export class MoodComponent extends React.Component<{ mood: Mood }> {
   render() {
     let Component;
-    switch (observableMoodStore.moodButtonState) {
+    moodStore.currentMood = this.props.mood;
+    switch (moodStore.moodButtonState) {
       case MoodButtonStates.menu:
-        Component = <MoodMenu moodCallBack={(mood: Mood) => observableMoodStore.setMood(mood)}/>;
+        Component = <MoodMenu moodCallBack={(mood: Mood) => moodStore.setMood(mood)}/>;
         break;
       default:
-        Component = <MoodSelectButton moodStore={observableMoodStore}/>;
+        Component = <MoodSelectButton moodStore={moodStore}/>;
     }
 
     return (
-      <div>
+      <div className={'journal-floating-container'}>
         {Component}
       </div>
     );

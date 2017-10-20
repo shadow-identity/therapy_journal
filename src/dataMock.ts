@@ -9,6 +9,9 @@ export const day: Day = {
 };
 
 export let days: Day[] = [];
-for (let i = 0; i <= 10; i++) {
-  days.push(day);
+let iterDay = Object.assign({}, day);
+for (let i = 1; i <= 30; i++) {
+  iterDay = Object.assign({}, day);
+  iterDay.date = `${i}st September`;
+  days.push(iterDay);
 }

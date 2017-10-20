@@ -6,10 +6,7 @@ import {MoodButtonStates, MoodStore} from './Mood';
 export function MoodSelectButton(props: {moodStore: MoodStore}) {
   return (
     <FloatingActionButton
-      style={{
-        position: 'absolute',
-        right: '20px',
-      }}
+
       onClick={() => {
         props.moodStore.moodButtonState = MoodButtonStates.menu;
       }}

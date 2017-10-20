@@ -2,7 +2,7 @@ import * as React from 'react';
 import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {JournalAppBar} from './JournalAppBar';
-import CardList from './CardList';
+import CardList from './DaysList';
 import {getMuiTheme, lightBaseTheme} from 'material-ui/styles';
 import {observable} from 'mobx';
 import {Day} from './interfaces';
@@ -32,8 +32,10 @@ class App extends React.Component {
 
     return (
       <MuiThemeProvider muiTheme={journalTheme}>
+        <div>
           <JournalAppBar store={journal}/>
           {content}
+        </div>
       </MuiThemeProvider>
     );
   }

@@ -7,7 +7,6 @@ import {default as Card, CardText, CardTitle} from 'material-ui/Card';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAddIcon from 'material-ui/svg-icons/content/add';
 import {JournalStore} from './App';
-import {SentimentIcons} from './Mood/Icons';
 
 @observer
 class CardTable extends React.Component<{store: JournalStore}, {}>  {
@@ -24,7 +23,7 @@ class CardTable extends React.Component<{store: JournalStore}, {}>  {
     const dateRowWidth = '7em';
     const rows = days.map(day => (
       <TableRow key={day.date}>
-        <TableRowColumn style={{width: dateRowWidth}}>{day.date}{SentimentIcons[day.mood]}</TableRowColumn>
+        <TableRowColumn style={{width: dateRowWidth}}>{day.date}</TableRowColumn>
         <TableRowColumn>{allDrugsTaken(day.drugs) ? <DoneIcon/> : null}</TableRowColumn>
         <TableRowColumn>{allTasksDone(day.tasks) ? <DoneIcon/> : null}</TableRowColumn>
         <TableRowColumn>{day.thoughts ? <DoneIcon/> : null}</TableRowColumn>
@@ -33,16 +32,13 @@ class CardTable extends React.Component<{store: JournalStore}, {}>  {
     ));
 
     return (
-      <Card style={{maxWidth: '600px', margin: 'auto'}}>
+      <Card className={'journal-card'}>
         <CardTitle
           title={
             <div>
               Therapy Calendar
               <FloatingActionButton
-                style={{
-                  position: 'absolute',
-                  right: '20px',
-                }}
+                className={'journal-floating-container'}
                 onClick={() => {this.props.store.calendar = false; }}
               >
                 <ContentAddIcon/>
@@ -51,7 +47,7 @@ class CardTable extends React.Component<{store: JournalStore}, {}>  {
           }
         />
         <CardText>
-          <Table>
+          <Table onRowSelection={() => console.log('row selected')}>
             <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
               <TableRow>
                 <TableHeaderColumn style={{width: dateRowWidth}}>Date</TableHeaderColumn>

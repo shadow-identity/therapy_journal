@@ -3,3 +3,14 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.journal-card {
+  max-width: 600px;
+  margin: 10px auto;
+}
+
+.journal-floating-container {
+  position: absolute;
+  right: 20px;
+  display: inline-block;
+}
