@@ -15,15 +15,25 @@ function MoodButton(props: { callBack: Function, mood: Mood }) {
   );
 }
 
-export class MoodMenu extends React.Component<{moodCallBack: Function}, {}> {
+export class MoodMenu extends React.Component<{ moodCallBack: Function }, {}> {
   render() {
     return (
       <div>
-        <MoodButton callBack={this.props.moodCallBack} mood={Mood.VerySatisfied}/>
-        <MoodButton callBack={this.props.moodCallBack} mood={Mood.Satisfied}/>
-        <MoodButton callBack={this.props.moodCallBack} mood={Mood.Neutral}/>
-        <MoodButton callBack={this.props.moodCallBack} mood={Mood.Dissatisfied}/>
-        <MoodButton callBack={this.props.moodCallBack} mood={Mood.VeryDissatisfied}/>
+        <div className={'journal-mood-button'}>
+          <MoodButton callBack={this.props.moodCallBack} mood={Mood.VerySatisfied}/>
+        </div>
+        <div className={'journal-mood-button'}>
+          <MoodButton callBack={this.props.moodCallBack} mood={Mood.Satisfied}/>
+        </div>
+        <div className={'journal-mood-button'}>
+          <MoodButton callBack={this.props.moodCallBack} mood={Mood.Neutral}/>
+        </div>
+        <div className={'journal-mood-button'}>
+          <MoodButton callBack={this.props.moodCallBack} mood={Mood.Dissatisfied}/>
+        </div>
+        <div className={'journal-mood-button'}>
+          <MoodButton callBack={this.props.moodCallBack} mood={Mood.VeryDissatisfied}/>
+        </div>
       </div>
     );
   }
