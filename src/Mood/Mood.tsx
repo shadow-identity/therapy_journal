@@ -1,19 +1,22 @@
 import * as React from 'react';
 import {observer} from 'mobx-react';
-import {Mood} from '../interfaces';
-import {MoodSelectButton} from './MoodSelectButton';
-import {MoodMenu} from './MoodMenu';
+// import {Mood} from '../interfaces';
 import {JournalStore} from '../stores';
+import {SpeedDial, BubbleList, BubbleListItem} from 'react-speed-dial';
+// import {SentimentIcons} from './Icons';
+// import CloseIcon from 'material-ui/svg-icons/navigation/close';
 
 @observer
 export class MoodComponent extends React.Component<{ store: JournalStore }> {
   render() {
-    let store = this.props.store;
+    // let store = this.props.store;
     return (
-      <div className={'journal-floating-container'}>
-        <MoodSelectButton store={store}/>
-        {store.showMoodMenu ? <MoodMenu moodCallBack={(mood: Mood) => store.setMood(mood)}/> : null}
-      </div>
+      <SpeedDial
+      >
+        <BubbleList>
+          <BubbleListItem primaryText={'lksdjf'}/>
+        </BubbleList>
+      </SpeedDial>
     );
   }
 }

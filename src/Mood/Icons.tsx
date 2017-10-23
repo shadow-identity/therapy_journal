@@ -8,7 +8,7 @@ import AddIcon from 'material-ui/svg-icons/content/add';
 import {Mood} from '../interfaces';
 
 export const SentimentIcons = {};
-SentimentIcons[Mood.VerySatisfied] = <SentimentVerySatisfiedIcon className={'journal-mood-icon'}/>;
+SentimentIcons[Mood.VerySatisfied] = () => <SentimentVerySatisfiedIcon className={'journal-mood-icon'}/>;
 SentimentIcons[Mood.Satisfied] = <SentimentSatisfiedIcon className={'journal-mood-icon'}/>;
 SentimentIcons[Mood.Neutral] = <SentimentNeutralIcon className={'journal-mood-icon'}/>;
 SentimentIcons[Mood.Dissatisfied] = <SentimentDissatisfiedIcon className={'journal-mood-icon'}/>;
