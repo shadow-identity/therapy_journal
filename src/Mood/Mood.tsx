@@ -9,14 +9,10 @@ import {JournalStore} from '../stores';
 export class MoodComponent extends React.Component<{ store: JournalStore }> {
   render() {
     let store = this.props.store;
-    let Component;
-    Component = store.showMoodMenu
-      ? <MoodMenu moodCallBack={(mood: Mood) => store.setMood(mood)}/>
-      : <MoodSelectButton store={store}/>;
-
     return (
       <div className={'journal-floating-container'}>
-        {Component}
+        <MoodSelectButton store={store}/>
+        {store.showMoodMenu ? <MoodMenu moodCallBack={(mood: Mood) => store.setMood(mood)}/> : null}
       </div>
     );
   }

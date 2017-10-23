@@ -6,6 +6,7 @@ import {Mood} from '../interfaces';
 function MoodButton(props: { callBack: Function, mood: Mood }) {
   return (
     <FloatingActionButton
+      mini={true}
       onClick={() => {
         props.callBack(props.mood);
       }}
@@ -19,19 +20,19 @@ export class MoodMenu extends React.Component<{ moodCallBack: Function }, {}> {
   render() {
     return (
       <div>
-        <div className={'journal-mood-button'}>
+        <div className={'journal-mood-item-button'}>
           <MoodButton callBack={this.props.moodCallBack} mood={Mood.VerySatisfied}/>
         </div>
-        <div className={'journal-mood-button'}>
+        <div className={'journal-mood-item-button'}>
           <MoodButton callBack={this.props.moodCallBack} mood={Mood.Satisfied}/>
         </div>
-        <div className={'journal-mood-button'}>
+        <div className={'journal-mood-item-button'}>
           <MoodButton callBack={this.props.moodCallBack} mood={Mood.Neutral}/>
         </div>
-        <div className={'journal-mood-button'}>
+        <div className={'journal-mood-item-button'}>
           <MoodButton callBack={this.props.moodCallBack} mood={Mood.Dissatisfied}/>
         </div>
-        <div className={'journal-mood-button'}>
+        <div className={'journal-mood-item-button'}>
           <MoodButton callBack={this.props.moodCallBack} mood={Mood.VeryDissatisfied}/>
         </div>
       </div>

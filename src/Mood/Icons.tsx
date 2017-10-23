@@ -4,6 +4,7 @@ import SentimentSatisfiedIcon from 'material-ui/svg-icons/social/sentiment-satis
 import SentimentNeutralIcon from 'material-ui/svg-icons/social/sentiment-neutral';
 import SentimentDissatisfiedIcon from 'material-ui/svg-icons/social/sentiment-dissatisfied';
 import SentimentVeryDissatisfiedIcon from 'material-ui/svg-icons/social/sentiment-very-dissatisfied';
+import AddIcon from 'material-ui/svg-icons/content/add';
 import {Mood} from '../interfaces';
 
 export const SentimentIcons = {};
@@ -12,3 +13,4 @@ SentimentIcons[Mood.Satisfied] = <SentimentSatisfiedIcon className={'journal-moo
 SentimentIcons[Mood.Neutral] = <SentimentNeutralIcon className={'journal-mood-icon'}/>;
 SentimentIcons[Mood.Dissatisfied] = <SentimentDissatisfiedIcon className={'journal-mood-icon'}/>;
 SentimentIcons[Mood.VeryDissatisfied] = <SentimentVeryDissatisfiedIcon className={'journal-mood-icon'}/>;
+SentimentIcons[Mood.Add] = <AddIcon className={'journal-mood-icon'}/>;

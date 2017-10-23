@@ -1,26 +1,36 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
 }
 
 .journal-card {
-  max-width: 600px;
-  margin: 10px auto;
+    max-width: 600px;
+    margin: 10px auto;
 }
 
 .journal-floating-container {
-  position: absolute;
-  right: 20px;
-  display: inline-block;
+    position: absolute;
+    right: 20px;
+    width: 100px;
+    margin: 0 auto;
+    display: inline-grid;
+}
+
+.journal-floating-submenu-container {
+    position: absolute;
+    right: 20px;
+    display: inline-grid;
 }
 
 .journal-mood-icon {
     width: 35px !important;
+
 }
 
-.journal-mood-button {
+.journal-mood-item-button {
     display: block;
-    padding-bottom: 10px;
-    z-index: 99;
+    padding-top: 10px;
+    margin: auto;
+    z-index: 6000;
 }

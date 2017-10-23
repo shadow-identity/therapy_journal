@@ -24,7 +24,8 @@ class DayCard extends React.Component<{ store: JournalStore }, {}> {
       <Checkbox
         key={i}
         checked={drug.isTaken}
-        label={<span>{drug.name}<small>{drug.amount}</small></span>}
+        label={<span>{drug.name}
+          <small>{drug.amount}</small></span>}
       />
     ));
 
@@ -43,14 +44,18 @@ class DayCard extends React.Component<{ store: JournalStore }, {}> {
           }
         />
         <CardText>
-          <h3>Drugs</h3>
-          {drugs}
-          <Checkbox
-            label={'Add another drug'}
-            checkedIcon={<AddIcon/>}
-            uncheckedIcon={<AddIcon/>}
-            {...addElementInvitationStyle}
-          />
+          <div >
+            <h3>Drugs</h3>
+            {drugs}
+            <Checkbox
+              label={'Add another drug'}
+              checkedIcon={<AddIcon/>}
+              uncheckedIcon={<AddIcon/>}
+              {...addElementInvitationStyle}
+            />
+          </div>
+        </CardText>
+        <CardText>
           <h3>Targets</h3>
           {tasks}
           <Checkbox
@@ -79,8 +84,8 @@ class DayCard extends React.Component<{ store: JournalStore }, {}> {
           />
         </CardText>
         <CardActions>
-          <FlatButton label="Previous day" />
-          <FlatButton label="Next day" />
+          <FlatButton label="Previous day"/>
+          <FlatButton label="Next day"/>
         </CardActions>
       </Card>
     );

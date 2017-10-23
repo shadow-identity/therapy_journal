@@ -9,7 +9,7 @@ export interface Task {
   isDone?: boolean;
 }
 
-export enum Mood {VerySatisfied, Satisfied, Neutral, Dissatisfied, VeryDissatisfied, unset}
+export enum Mood {VerySatisfied, Satisfied, Neutral, Dissatisfied, VeryDissatisfied, Add}
 
 export interface Day {
   date: string;
