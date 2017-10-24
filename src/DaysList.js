@@ -1,23 +1,21 @@
 import * as React from 'react';
 import {observer} from 'mobx-react';
 import Table, {TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn} from 'material-ui/Table';
-import {Drug, Task} from './interfaces';
 import DoneIcon from 'material-ui/svg-icons/action/done';
 import {default as Card, CardText, CardTitle} from 'material-ui/Card';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAddIcon from 'material-ui/svg-icons/content/add';
-import {JournalStore} from './stores';
 
 @observer
-class CardTable extends React.Component<{ store: JournalStore }, {}> {
+class CardTable extends React.Component {
   render() {
     const days = this.props.store.days;
 
-    function allDrugsTaken(drugs: Drug[]) {
+    function allDrugsTaken(drugs) {
       return drugs.reduce((acc, current) => acc && current.isTaken, drugs[0].isTaken === true);
     }
 
-    function allTasksDone(tasks: Task[]) {
+    function allTasksDone(tasks) {
       return tasks.reduce((acc, current) => acc && current.isDone, tasks[0].isDone === true);
     }
 
@@ -51,7 +49,7 @@ class CardTable extends React.Component<{ store: JournalStore }, {}> {
         />
         <CardText>
           <Table
-            onRowSelection={(rowNumber: number[]) => {
+            onRowSelection={(rowNumber) => {
               this.props.store.day = days[rowNumber[0]];
               this.props.store.calendar = false;
             }}

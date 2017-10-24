@@ -4,18 +4,16 @@ import Checkbox from 'material-ui/Checkbox';
 import TextField from 'material-ui/TextField';
 import AddIcon from 'material-ui/svg-icons/content/add';
 import {grey500} from 'material-ui/styles/colors';
-import {CSSProperties} from 'react';
 import {journalTheme} from './App';
 import {MoodComponent} from './Mood/Mood';
 import FlatButton from 'material-ui/FlatButton';
-import {JournalStore} from './stores';
 
 const disabledColor = () => journalTheme.palette !== undefined ? journalTheme.palette.disabledColor : grey500;
 
-class DayCard extends React.Component<{ store: JournalStore }, {}> {
+class DayCard extends React.Component {
   render() {
     let day = this.props.store.day;
-    const addElementInvitationStyle: CSSProperties = {
+    const addElementInvitationStyle = {
       labelStyle: {color: disabledColor(), fill: disabledColor()},
       iconStyle: {color: disabledColor(), fill: disabledColor()}
     };

@@ -9,7 +9,6 @@ import TodayIcon from 'material-ui/svg-icons/action/today';
 import {black} from 'material-ui/styles/colors';
 import {journalTheme} from './App';
 import {observer} from 'mobx-react';
-import {JournalStore} from './stores';
 
 // rm it after IconButton color will be fixed at material-ui
 const buttonColor = () => journalTheme.palette !== undefined ? journalTheme.palette.alternateTextColor : black;
@@ -29,13 +28,13 @@ const MainMenu = () => (
   </IconMenu>
 );
 
-const CalendarButton = observer((props: {store: JournalStore}) => (
+const CalendarButton = observer((props) => (
   <IconButton onClick={() => props.store.calendar = !props.store.calendar}>
     {props.store.calendar ? <TodayIcon color={buttonColor()}/> : <DateRangeIcon color={buttonColor()}/>}
   </IconButton>
 ));
 
-export const JournalAppBar = observer((props: {store: JournalStore}) => (
+export const JournalAppBar = observer((props) => (
   <AppBar
     title="Therapy Journal"
     iconElementRight={<div><CalendarButton store={props.store}/></div>}

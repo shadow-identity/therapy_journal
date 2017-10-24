@@ -1,17 +1,17 @@
-export interface Drug {
+ interface Drug {
   name: string;
   isTaken?: boolean;
   amount?: string;
 }
 
-export interface Task {
+ interface Task {
   name: string;
   isDone?: boolean;
 }
 
-export enum Mood {VerySatisfied, Satisfied, Neutral, Dissatisfied, VeryDissatisfied, Add}
+ enum Mood {VerySatisfied, Satisfied, Neutral, Dissatisfied, VeryDissatisfied, Add}
 
-export interface Day {
+ interface Day {
   date: string;
   mood: Mood;
   drugs: Drug[];

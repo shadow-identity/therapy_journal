@@ -1,18 +1,17 @@
 import {observable} from 'mobx';
-import {Day, Mood} from './interfaces';
 import {days} from './dataMock';
 
 export class JournalStore {
-  @observable days: Day[] = days;
+  @observable days = days;
   @observable calendar = true;
-  @observable day: Day;
-  @observable showMoodMenu: boolean = false;
+  @observable day;
+  @observable showMoodMenu = false;
 
-  addDay(day: Day) {
+  addDay(day) {
     this.days.push(day);
   }
 
-  setMood(mood: Mood) {
+  setMood(mood) {
     this.day.mood = mood;
     this.showMoodMenu = !this.showMoodMenu;
   }

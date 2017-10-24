@@ -1,6 +1,6 @@
-import {Day, Mood} from './interfaces';
+import {Mood} from './mood';
 
-export const day: Day = {
+export const day = {
   date: '1st September',
   mood: Mood.Neutral,
   drugs: [{name: 'Ibuprofen', amount: '1 tablet'}, {name: 'MDMA', isTaken: true}],
@@ -8,7 +8,7 @@ export const day: Day = {
   dream: 'Strange dream'
 };
 
-export let days: Day[] = [];
+export let days = [];
 let iterDay = Object.assign({}, day);
 for (let i = 1; i <= 30; i++) {
   iterDay = Object.assign({}, day);

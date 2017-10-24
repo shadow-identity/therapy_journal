@@ -1,9 +1,9 @@
 import * as React from 'react';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import {SentimentIcons} from './Icons';
-import {Mood} from '../interfaces';
+import {Mood} from '../data/mood';
 
-function MoodButton(props: { callBack: Function, mood: Mood }) {
+function MoodButton(props) {
   return (
     <FloatingActionButton
       mini={true}
@@ -16,7 +16,7 @@ function MoodButton(props: { callBack: Function, mood: Mood }) {
   );
 }
 
-export class MoodMenu extends React.Component<{ moodCallBack: Function }, {}> {
+export class MoodMenu extends React.Component {
   render() {
     return (
       <div>
