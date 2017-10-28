@@ -2,13 +2,15 @@ import * as React from 'react';
 import {Card, CardActions, CardText, CardTitle} from 'material-ui/Card';
 import Checkbox from 'material-ui/Checkbox';
 import TextField from 'material-ui/TextField';
-import AddIcon from 'material-ui/svg-icons/content/add';
-import {grey500} from 'material-ui/styles/colors';
+import AddIcon from 'material-ui-icons/Add';
+import {grey} from 'material-ui-next/colors';
 import {CSSProperties} from 'react';
 import {journalTheme} from './App';
 import {MoodComponent} from './Mood/Mood';
-import FlatButton from 'material-ui/FlatButton';
+import Button from 'material-ui-next/Button';
 import {JournalStore} from './data/stores';
+
+const grey500 = grey['500'];
 
 const disabledColor = () => journalTheme.palette !== undefined ? journalTheme.palette.disabledColor : grey500;
 
@@ -44,7 +46,7 @@ class DayCard extends React.Component<{ store: JournalStore }, {}> {
           }
         />
         <CardText>
-          <div >
+          <div>
             <h3>Drugs</h3>
             {drugs}
             <Checkbox
@@ -84,8 +86,8 @@ class DayCard extends React.Component<{ store: JournalStore }, {}> {
           />
         </CardText>
         <CardActions>
-          <FlatButton label="Previous day"/>
-          <FlatButton label="Next day"/>
+          <Button>Previous day</Button>
+          <Button>Next day</Button>>
         </CardActions>
       </Card>
     );

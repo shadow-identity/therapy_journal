@@ -3,7 +3,7 @@ import {SentimentIcons} from './Icons';
 import * as React from 'react';
 import {JournalStore} from '../data/stores';
 import {observer} from 'mobx-react';
-import CloseIcon from 'material-ui/svg-icons/navigation/close';
+import CloseIcon from 'material-ui-icons/Close';
 
 export const MoodSelectButton = observer((props: { store: JournalStore }) => {
   let showMenu = props.store.showMoodMenu;

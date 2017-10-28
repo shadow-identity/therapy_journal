@@ -1,10 +1,10 @@
 import * as React from 'react';
-import SentimentVerySatisfiedIcon from 'material-ui/svg-icons/social/sentiment-very-satisfied';
-import SentimentSatisfiedIcon from 'material-ui/svg-icons/social/sentiment-satisfied';
-import SentimentNeutralIcon from 'material-ui/svg-icons/social/sentiment-neutral';
-import SentimentDissatisfiedIcon from 'material-ui/svg-icons/social/sentiment-dissatisfied';
-import SentimentVeryDissatisfiedIcon from 'material-ui/svg-icons/social/sentiment-very-dissatisfied';
-import AddIcon from 'material-ui/svg-icons/content/add';
+import SentimentVerySatisfiedIcon from 'material-ui-icons/SentimentVerySatisfied';
+import SentimentSatisfiedIcon from 'material-ui-icons/SentimentSatisfied';
+import SentimentNeutralIcon from 'material-ui-icons/SentimentNeutral';
+import SentimentDissatisfiedIcon from 'material-ui-icons/SentimentDissatisfied';
+import SentimentVeryDissatisfiedIcon from 'material-ui-icons/SentimentVeryDissatisfied';
+import AddIcon from 'material-ui-icons/Add';
 import {Mood} from '../data/interfaces';
 
 export const SentimentIcons = {};

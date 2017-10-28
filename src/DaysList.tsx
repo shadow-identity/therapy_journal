@@ -2,10 +2,10 @@ import * as React from 'react';
 import {observer} from 'mobx-react';
 import Table, {TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn} from 'material-ui/Table';
 import {Drug, Task} from './data/interfaces';
-import DoneIcon from 'material-ui/svg-icons/action/done';
 import {default as Card, CardText, CardTitle} from 'material-ui/Card';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAddIcon from 'material-ui/svg-icons/content/add';
+import ContentAddIcon from 'material-ui-icons/Add';
+import DoneIcon from 'material-ui-icons/Done';
 import {JournalStore} from './data/stores';
 
 @observer
