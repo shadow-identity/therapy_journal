@@ -8,7 +8,7 @@ import {CSSProperties} from 'react';
 import {journalTheme} from './App';
 import {MoodComponent} from './Mood/Mood';
 import FlatButton from 'material-ui/FlatButton';
-import {JournalStore} from './stores';
+import {JournalStore} from './data/stores';
 
 const disabledColor = () => journalTheme.palette !== undefined ? journalTheme.palette.disabledColor : grey500;
 

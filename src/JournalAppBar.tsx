@@ -9,7 +9,7 @@ import TodayIcon from 'material-ui/svg-icons/action/today';
 import {black} from 'material-ui/styles/colors';
 import {journalTheme} from './App';
 import {observer} from 'mobx-react';
-import {JournalStore} from './stores';
+import {JournalStore} from './data/stores';
 
 // rm it after IconButton color will be fixed at material-ui
 const buttonColor = () => journalTheme.palette !== undefined ? journalTheme.palette.alternateTextColor : black;

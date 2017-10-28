@@ -16,21 +16,3 @@ body {
     margin: 0 auto;
     display: inline-grid;
 }
-
-.journal-floating-submenu-container {
-    position: absolute;
-    right: 20px;
-    display: inline-grid;
-}
-
-.journal-mood-icon {
-    width: 35px !important;
-
-}
-
-.journal-mood-item-button {
-    display: block;
-    padding-top: 10px;
-    margin: auto;
-    z-index: 6000;
-}

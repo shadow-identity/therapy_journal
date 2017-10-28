@@ -1,7 +1,7 @@
 import * as React from 'react';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import {SentimentIcons} from './Icons';
-import {Mood} from '../interfaces';
+import {Mood} from '../data/interfaces';
 
 function MoodButton(props: { callBack: Function, mood: Mood }) {
   return (

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {observer} from 'mobx-react';
-import {Mood} from '../interfaces';
+import {Mood} from '../data/interfaces';
 import {MoodSelectButton} from './MoodSelectButton';
 import {MoodMenu} from './MoodMenu';
-import {JournalStore} from '../stores';
+import {JournalStore} from '../data/stores';
 
 @observer
 export class MoodComponent extends React.Component<{ store: JournalStore }> {

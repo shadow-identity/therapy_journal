@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {observer} from 'mobx-react';
 import Table, {TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn} from 'material-ui/Table';
-import {Drug, Task} from './interfaces';
+import {Drug, Task} from './data/interfaces';
 import DoneIcon from 'material-ui/svg-icons/action/done';
 import {default as Card, CardText, CardTitle} from 'material-ui/Card';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAddIcon from 'material-ui/svg-icons/content/add';
-import {JournalStore} from './stores';
+import {JournalStore} from './data/stores';
 
 @observer
 class CardTable extends React.Component<{ store: JournalStore }, {}> {

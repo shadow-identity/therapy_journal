@@ -6,7 +6,7 @@ import CardList from './DaysList';
 import {getMuiTheme, lightBaseTheme} from 'material-ui/styles';
 import DayCard from './DayCard';
 import {observer} from 'mobx-react';
-import {journal} from './stores';
+import {journal} from './data/stores';
 
 export const journalTheme = getMuiTheme(lightBaseTheme);
 
