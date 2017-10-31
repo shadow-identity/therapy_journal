@@ -9,11 +9,11 @@ export interface Task {
   isDone?: boolean;
 }
 
-export enum Mood {VerySatisfied, Satisfied, Neutral, Dissatisfied, VeryDissatisfied, Add}
+export enum Mood {VerySatisfied, Satisfied, Neutral, Dissatisfied, VeryDissatisfied}
 
 export interface Day {
   date: string;
-  mood: Mood;
+  mood: Mood | null;
   drugs: Drug[];
   tasks: Task[];
   dream?: string;

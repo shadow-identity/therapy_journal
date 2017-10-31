@@ -1,21 +1,20 @@
 import {observable} from 'mobx';
-import {Day, Mood} from './interfaces';
+import {Day} from './interfaces';
 import {days} from './dataMock';
 
 export class JournalStore {
   @observable days: Day[] = days;
   @observable calendar = true;
   @observable day: Day;
-  @observable showMoodMenu: boolean = false;
 
   addDay(day: Day) {
     this.days.push(day);
   }
+}
 
-  setMood(mood: Mood) {
-    this.day.mood = mood;
-    this.showMoodMenu = !this.showMoodMenu;
-  }
+export class MoodMenuStore {
+  @observable showMenu: boolean = false;
+  @observable buttonEl: HTMLElement;
 }
 
 export const journal = new JournalStore();

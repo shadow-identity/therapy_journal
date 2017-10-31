@@ -1,18 +1,35 @@
 import * as React from 'react';
 import {observer} from 'mobx-react';
-import {Mood} from '../data/interfaces';
-import {MoodSelectButton} from './MoodSelectButton';
+import Button from 'material-ui-next/Button';
 import {MoodMenu} from './MoodMenu';
-import {JournalStore} from '../data/stores';
+import {JournalStore, MoodMenuStore} from '../data/stores';
+import {SentimentIcons} from './Icons';
 
 @observer
 export class MoodComponent extends React.Component<{ store: JournalStore }> {
+  menuState = new MoodMenuStore();
+
+  // tslint:disable-next-line
+  handleMenuButtonClick = (event: any) => {
+    this.menuState.showMenu = true;
+    this.menuState.buttonEl = event.currentTarget;
+  }
+
+  handleMenuClose = (event: Event) => {
+    this.menuState.showMenu = false;
+  }
+
   render() {
-    let store = this.props.store;
+    const store = this.props.store;
+    const day = store.day;
+    let selectButtonProps = day.mood === null
+      ? {color: 'accent', children: 'Set your mood', raised: true}
+      : {children: SentimentIcons[day.mood!]};
+
     return (
       <div className={'journal-floating-container'}>
-        <MoodSelectButton store={store}/>
-        {store.showMoodMenu ? <MoodMenu moodCallBack={(mood: Mood) => store.setMood(mood)}/> : null}
+        <Button {...selectButtonProps} onClick={this.handleMenuButtonClick}/>
+        <MoodMenu store={store} menuState={this.menuState}/>
       </div>
     );
   }

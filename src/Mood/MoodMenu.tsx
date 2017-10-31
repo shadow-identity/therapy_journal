@@ -1,41 +1,41 @@
 import * as React from 'react';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import {SentimentIcons} from './Icons';
 import {Mood} from '../data/interfaces';
+import {JournalStore, MoodMenuStore} from '../data/stores';
+import {observer} from 'mobx-react';
+import Menu from 'material-ui-next/Menu';
+import MenuItem from 'material-ui/MenuItem';
+import {EnumValues} from 'enum-values';
+import {SentimentIcons} from './Icons';
 
-function MoodButton(props: { callBack: Function, mood: Mood }) {
-  return (
-    <FloatingActionButton
-      mini={true}
-      onClick={() => {
-        props.callBack(props.mood);
-      }}
-    >
-      {SentimentIcons[props.mood]}
-    </FloatingActionButton>
-  );
-}
+@observer
+export class MoodMenu extends React.Component<{ store: JournalStore, menuState: MoodMenuStore }, {}> {
+  handleMenuClose = (event: Event) => {
+    this.props.menuState.showMenu = false;
+  }
 
-export class MoodMenu extends React.Component<{ moodCallBack: Function }, {}> {
+  handleMenuItemSelect = (mood: number) => {
+    this.props.store.day.mood = mood;
+    this.props.menuState.showMenu = false;
+
+  }
+
   render() {
+    const menuState = this.props.menuState;
     return (
-      <div>
-        <div className={'journal-mood-item-button'}>
-          <MoodButton callBack={this.props.moodCallBack} mood={Mood.VerySatisfied}/>
-        </div>
-        <div className={'journal-mood-item-button'}>
-          <MoodButton callBack={this.props.moodCallBack} mood={Mood.Satisfied}/>
-        </div>
-        <div className={'journal-mood-item-button'}>
-          <MoodButton callBack={this.props.moodCallBack} mood={Mood.Neutral}/>
-        </div>
-        <div className={'journal-mood-item-button'}>
-          <MoodButton callBack={this.props.moodCallBack} mood={Mood.Dissatisfied}/>
-        </div>
-        <div className={'journal-mood-item-button'}>
-          <MoodButton callBack={this.props.moodCallBack} mood={Mood.VeryDissatisfied}/>
-        </div>
-      </div>
+      <Menu anchorEl={menuState.buttonEl} open={menuState.showMenu} onRequestClose={this.handleMenuClose}>
+        {EnumValues.getNamesAndValues(Mood).map(
+          (key: { name: string, value: number }) =>
+            <MenuItem
+              key={key.value}
+              leftIcon={SentimentIcons[key.value]}
+              onClick={() => this.handleMenuItemSelect(key.value)}
+            >
+              {key.name}
+            </MenuItem>
+        )
+        }
+      </Menu>
+
     );
   }
 }

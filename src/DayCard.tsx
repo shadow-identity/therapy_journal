@@ -9,11 +9,13 @@ import {journalTheme} from './App';
 import {MoodComponent} from './Mood/Mood';
 import Button from 'material-ui-next/Button';
 import {JournalStore} from './data/stores';
+import {observer} from 'mobx-react';
 
 const grey500 = grey['500'];
 
 const disabledColor = () => journalTheme.palette !== undefined ? journalTheme.palette.disabledColor : grey500;
 
+@observer
 class DayCard extends React.Component<{ store: JournalStore }, {}> {
   render() {
     let day = this.props.store.day;

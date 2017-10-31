@@ -1,8 +1,8 @@
-import {Day, Mood} from './interfaces';
+import {Day} from './interfaces';
 
 export const day: Day = {
   date: '1st September',
-  mood: Mood.Neutral,
+  mood: null,
   drugs: [{name: 'Ibuprofen', amount: '1 tablet'}, {name: 'MDMA', isTaken: true}],
   tasks: [{name: 'Fill this journal'}, {name: 'Do some good stuff'}],
   dream: 'Strange dream'
