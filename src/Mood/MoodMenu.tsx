@@ -14,9 +14,8 @@ export class MoodMenu extends React.Component<{ store: JournalStore, menuState: 
   }
 
   handleMenuItemSelect = (mood: number) => {
-    this.props.store.day.mood = mood;
+    this.props.store.getDay(this.props.store.selectedDate).mood = mood;
     this.props.menuState.showMenu = false;
-
   }
 
   render() {

@@ -7,6 +7,7 @@ import {getMuiTheme, lightBaseTheme} from 'material-ui/styles';
 import DayCard from './DayCard';
 import {observer} from 'mobx-react';
 import {journal} from './data/stores';
+import DevTools from 'mobx-react-devtools';
 
 export const journalTheme = getMuiTheme(lightBaseTheme);
 
@@ -22,6 +23,7 @@ class App extends React.Component {
         <div>
           <JournalAppBar store={journal}/>
           {content}
+          <DevTools/>
         </div>
       </MuiThemeProvider>
     );

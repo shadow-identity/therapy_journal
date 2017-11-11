@@ -24,9 +24,10 @@ class CardTable extends React.Component<{ store: JournalStore }, {}> {
     const dateRowWidth = '7em';
     const rows = days.map((day, index) => (
       <TableRow key={index}>
-        <TableRowColumn style={{width: dateRowWidth}}>{day.date}</TableRowColumn>
-        <TableRowColumn>{allDrugsTaken(day.drugs) ? <DoneIcon/> : null}</TableRowColumn>
-        <TableRowColumn>{allTasksDone(day.tasks) ? <DoneIcon/> : null}</TableRowColumn>
+        <TableRowColumn style={{width: dateRowWidth}}>{day.date}
+        </TableRowColumn>
+        <TableRowColumn>{day.drugs.length && allDrugsTaken(day.drugs) ? <DoneIcon/> : null}</TableRowColumn>
+        <TableRowColumn>{day.tasks.length && allTasksDone(day.tasks) ? <DoneIcon/> : null}</TableRowColumn>
         <TableRowColumn>{day.thoughts ? <DoneIcon/> : null}</TableRowColumn>
         <TableRowColumn>{day.dream ? <DoneIcon/> : null}</TableRowColumn>
       </TableRow>
@@ -41,6 +42,7 @@ class CardTable extends React.Component<{ store: JournalStore }, {}> {
               <FloatingActionButton
                 className={'journal-floating-container'}
                 onClick={() => {
+                  this.props.store.getDay();
                   this.props.store.calendar = false;
                 }}
               >
@@ -52,7 +54,7 @@ class CardTable extends React.Component<{ store: JournalStore }, {}> {
         <CardText>
           <Table
             onRowSelection={(rowNumber: number[]) => {
-              this.props.store.day = days[rowNumber[0]];
+              this.props.store.selectedDate = days[rowNumber[0]].date;
               this.props.store.calendar = false;
             }}
           >
@@ -67,11 +69,9 @@ class CardTable extends React.Component<{ store: JournalStore }, {}> {
             </TableHeader>
             <TableBody displayRowCheckbox={false} showRowHover={true}>
               {rows}
-
             </TableBody>
           </Table>
         </CardText>
-
       </Card>
     );
   }

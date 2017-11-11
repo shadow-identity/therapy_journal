@@ -21,8 +21,8 @@ export class MoodComponent extends React.Component<{ store: JournalStore }> {
 
   render() {
     const store = this.props.store;
-    const day = store.day;
-    let selectButtonProps = day.mood === null
+    const day = store.getDay(store.selectedDate);
+    let selectButtonProps = day.mood! === null
       ? {color: 'accent', children: 'Set your mood', raised: true}
       : {children: SentimentIcons[day.mood!]};
 

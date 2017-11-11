@@ -18,7 +18,7 @@ const disabledColor = () => journalTheme.palette !== undefined ? journalTheme.pa
 @observer
 class DayCard extends React.Component<{ store: JournalStore }, {}> {
   render() {
-    let day = this.props.store.day;
+    let day = this.props.store.getDay(this.props.store.selectedDate);
     const addElementInvitationStyle: CSSProperties = {
       labelStyle: {color: disabledColor(), fill: disabledColor()},
       iconStyle: {color: disabledColor(), fill: disabledColor()}
@@ -26,15 +26,15 @@ class DayCard extends React.Component<{ store: JournalStore }, {}> {
 
     const drugs = day.drugs.map((drug, i) => (
       <Checkbox
-        key={i}
+        key={drug.name}
         checked={drug.isTaken}
         label={<span>{drug.name}
           <small>{drug.amount}</small></span>}
       />
     ));
 
-    const tasks = day.tasks.map((task, i) => (
-      <Checkbox key={i} checked={task.isDone} label={task.name}/>
+    const tasks = day.tasks.map((task) => (
+      <Checkbox key={task.name} checked={task.isDone} label={task.name}/>
     ));
 
     return (
