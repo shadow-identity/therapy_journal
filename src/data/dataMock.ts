@@ -5,7 +5,7 @@ function genDay(date: number): Day {
   return {
     date: dateToString(new Date(2017, 9, date)),
     mood: null,
-    drugs: [{name: 'Ibuprofen', amount: '1 tablet'}, {name: 'MDMA', isTaken: true}],
+    drugs: [{name: 'Ibuprofen', amount: '1 tablet', isTaken: false}, {name: 'MDMA', isTaken: true}],
     tasks: [{name: 'Fill this journal'}, {name: 'Do some good stuff'}],
     dream: 'Strange dream'
   };

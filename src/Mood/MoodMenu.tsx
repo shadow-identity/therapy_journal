@@ -2,14 +2,14 @@ import * as React from 'react';
 import {Mood} from '../data/interfaces';
 import {JournalStore, MoodMenuStore} from '../data/stores';
 import {observer} from 'mobx-react';
-import Menu from 'material-ui-next/Menu';
-import MenuItem from 'material-ui/MenuItem';
+import Menu, {MenuItem} from 'material-ui/Menu';
+import { ListItemIcon, ListItemText } from 'material-ui/List';
 import {EnumValues} from 'enum-values';
 import {SentimentIcons} from './Icons';
 
 @observer
 export class MoodMenu extends React.Component<{ store: JournalStore, menuState: MoodMenuStore }, {}> {
-  handleMenuClose = (event: Event) => {
+  handleMenuClose = (): void => {
     this.props.menuState.showMenu = false;
   }
 
@@ -21,18 +21,22 @@ export class MoodMenu extends React.Component<{ store: JournalStore, menuState: 
   render() {
     const menuState = this.props.menuState;
     return (
-      <Menu anchorEl={menuState.buttonEl} open={menuState.showMenu} onRequestClose={this.handleMenuClose}>
-        {EnumValues.getNamesAndValues(Mood).map(
-          (key: { name: string, value: number }) =>
-            <MenuItem
-              key={key.value}
-              leftIcon={SentimentIcons[key.value]}
-              onClick={() => this.handleMenuItemSelect(key.value)}
-            >
-              {key.name}
-            </MenuItem>
-        )
-        }
+      <Menu anchorEl={menuState.buttonEl} open={menuState.showMenu} onClose={this.handleMenuClose}>
+        {/*<MenuList>*/}
+          {EnumValues.getNamesAndValues(Mood).map(
+            (key: { name: string, value: number }) =>
+              <MenuItem
+                key={key.value}
+                onClick={() => this.handleMenuItemSelect(key.value)}
+              >
+                <ListItemIcon>
+                  {SentimentIcons[key.value]}
+                </ListItemIcon>
+                <ListItemText primary={key.name} />
+              </MenuItem>
+          )
+          }
+        {/*</MenuList>*/}
       </Menu>
 
     );

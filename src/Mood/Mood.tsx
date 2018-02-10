@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {observer} from 'mobx-react';
-import Button from 'material-ui-next/Button';
+import Button from 'material-ui/Button';
 import {MoodMenu} from './MoodMenu';
 import {JournalStore, MoodMenuStore} from '../data/stores';
 import {SentimentIcons} from './Icons';
