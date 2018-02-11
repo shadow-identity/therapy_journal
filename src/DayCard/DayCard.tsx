@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Card, {CardActions, CardContent} from 'material-ui/Card';
+import Card, {CardActions, CardContent, CardHeader} from 'material-ui/Card';
 import Checkbox from 'material-ui/Checkbox';
 import TextField from 'material-ui/TextField';
 import AddIcon from 'material-ui-icons/Add';
@@ -50,13 +50,13 @@ class DayCard extends React.Component<{ store: JournalStore }, {}> {
 
     return (
       <Card className={'journal-card'}>
-        <CardContent >
-          <Typography variant="headline">
-            {day.date}
-            <MoodComponent store={this.props.store}/>
-          </Typography>
+        <CardHeader
+          action={<MoodComponent store={this.props.store}/>}
+          title={day.date}
+        />
+        <CardContent>
           <div>
-            <h3>Drugs</h3>
+            <Typography>Drugs</Typography>
             <FormGroup>
               {drugs}
               <NewListItem

@@ -23,12 +23,12 @@ export class MoodComponent extends React.Component<{ store: JournalStore }> {
     const store = this.props.store;
     const day = store.getDay(store.selectedDate);
     let selectButtonProps = day.mood! === null
-      ? {color: 'accent', children: 'Set your mood', raised: true}
+      ? {children: 'Set your mood'}
       : {children: SentimentIcons[day.mood!]};
 
     return (
-      <div className={'journal-floating-container'}>
-        <Button {...selectButtonProps} onClick={this.handleMenuButtonClick}/>
+      <div>
+        <Button {...selectButtonProps} onClick={this.handleMenuButtonClick} variant="raised"/>
         <MoodMenu store={store} menuState={this.menuState}/>
       </div>
     );

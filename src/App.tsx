@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-import {JournalAppBar} from './JournalAppBar';
+import {JournalAppBar} from './JournalAppBar/JournalAppBar';
 import CardList from './DaysList/DaysList';
 import DayCard from './DayCard/DayCard';
 import {observer} from 'mobx-react';

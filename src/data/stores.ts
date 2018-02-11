@@ -3,12 +3,6 @@ import {Day} from './interfaces';
 import {days} from './dataMock';
 import {getToday} from './dateUtils';
 
-export class JournalAppMenuStore {
-  @observable anchorEl: Element | null = null;
-}
-
-export const journalAppMenuStore = new JournalAppMenuStore();
-
 export class JournalStore {
   @observable days: Day[] = days;
   @observable calendar = true;
