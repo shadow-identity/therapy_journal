@@ -8,11 +8,20 @@ import Card, {CardContent} from 'material-ui/Card';
 import ContentAddIcon from 'material-ui-icons/Add';
 import DoneIcon from 'material-ui-icons/Done';
 import {JournalStore} from '../data/stores';
+import withStyles from 'material-ui/styles/withStyles';
+import {Theme} from 'material-ui';
 
-@observer
-class CardTable extends React.Component<{ store: JournalStore }, {}> {
-  render() {
-    const days = this.props.store.days;
+const styles = (theme: Theme) => ({
+  fab: {
+    backgroundColor: 'red',
+    bottom: theme.spacing.unit * 2,
+    right: theme.spacing.unit * 2,
+  }
+});
+
+// @observer
+function CardTable(props: {store: JournalStore}): React.SFC {
+    const days = props.store.days;
 
     function allDrugsTaken(drugs: Drug[]) {
       return drugs.reduce((acc, current) => acc && current.isTaken, drugs[0].isTaken === true);
@@ -27,8 +36,8 @@ class CardTable extends React.Component<{ store: JournalStore }, {}> {
       <TableRow
         key={index}
         onClick={() => {
-          this.props.store.selectedDate = days[index].date;
-          this.props.store.calendar = false;
+          props.store.selectedDate = days[index].date;
+          props.store.calendar = false;
         }}
       >
         <TableCell style={{width: dateRowWidth}} padding="dense">{day.date}
@@ -49,10 +58,10 @@ class CardTable extends React.Component<{ store: JournalStore }, {}> {
           <Button
             variant="fab"
             color="primary"
-            className="journal-floating-container"
+            className="fab"
             onClick={() => {
-              this.props.store.getDay();
-              this.props.store.calendar = false;
+              props.store.getDay();
+              props.store.calendar = false;
             }}
           >
             <ContentAddIcon/>
@@ -74,7 +83,7 @@ class CardTable extends React.Component<{ store: JournalStore }, {}> {
         </CardContent>
       </Card>
     );
-  }
 }
 
-export default CardTable;
+export default observer(withStyles(styles, { withTheme: true })(CardTable));
+// export default CardTable;
