@@ -19,7 +19,7 @@ export const JournalAppBar = observer((props: { store: JournalStore }) => (
   <AppBar position="static">
     <Toolbar>
       <MainMenu/>
-      <Typography variant="title">
+      <Typography variant="title" className="title">
         Therapy Journal
       </Typography>
       <CalendarButton store={props.store}/>

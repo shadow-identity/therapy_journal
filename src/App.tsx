@@ -1,11 +1,13 @@
 import * as React from 'react';
-import './App.css';
+import CssBaseline from 'material-ui/CssBaseline';
+import {observer} from 'mobx-react';
+import DevTools from 'mobx-react-devtools';
+
 import {JournalAppBar} from './JournalAppBar/JournalAppBar';
 import CardList from './DaysList/DaysList';
 import DayCard from './DayCard/DayCard';
-import {observer} from 'mobx-react';
 import {journal} from './data/stores';
-import DevTools from 'mobx-react-devtools';
+import './App.css';
 
 @observer
 class App extends React.Component {
@@ -16,6 +18,7 @@ class App extends React.Component {
 
     return (
       <div>
+        <CssBaseline />
         <JournalAppBar store={journal}/>
         {content}
         <DevTools/>

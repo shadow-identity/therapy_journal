@@ -1,27 +1,16 @@
 import * as React from 'react';
 import {observer} from 'mobx-react';
-import Typography from 'material-ui/Typography';
 import Table, {TableHead, TableRow, TableCell, TableBody} from 'material-ui/Table';
-import Button from 'material-ui/Button';
 import {Drug, Task} from '../data/interfaces';
 import Card, {CardContent} from 'material-ui/Card';
-import ContentAddIcon from 'material-ui-icons/Add';
 import DoneIcon from 'material-ui-icons/Done';
-import {JournalStore} from '../data/stores';
-import withStyles from 'material-ui/styles/withStyles';
-import {Theme} from 'material-ui';
+import {journal, JournalStore} from '../data/stores';
+import CardHeaderFAB from '../components/CardHeader';
 
-const styles = (theme: Theme) => ({
-  fab: {
-    backgroundColor: 'red',
-    bottom: theme.spacing.unit * 2,
-    right: theme.spacing.unit * 2,
-  }
-});
-
-// @observer
-function CardTable(props: {store: JournalStore}): React.SFC {
-    const days = props.store.days;
+@observer
+class CardTable extends React.Component<{ store: JournalStore }, {}> {
+  render() {
+    const days = this.props.store.days;
 
     function allDrugsTaken(drugs: Drug[]) {
       return drugs.reduce((acc, current) => acc && current.isTaken, drugs[0].isTaken === true);
@@ -36,8 +25,8 @@ function CardTable(props: {store: JournalStore}): React.SFC {
       <TableRow
         key={index}
         onClick={() => {
-          props.store.selectedDate = days[index].date;
-          props.store.calendar = false;
+          this.props.store.selectedDate = days[index].date;
+          this.props.store.calendar = false;
         }}
       >
         <TableCell style={{width: dateRowWidth}} padding="dense">{day.date}
@@ -52,20 +41,8 @@ function CardTable(props: {store: JournalStore}): React.SFC {
     return (
       <Card className={'journal-card'}>
         <CardContent>
-          <Typography variant="headline">
-            Therapy Calendar
-          </Typography>
-          <Button
-            variant="fab"
-            color="primary"
-            className="fab"
-            onClick={() => {
-              props.store.getDay();
-              props.store.calendar = false;
-            }}
-          >
-            <ContentAddIcon/>
-          </Button>
+          <CardHeaderFAB store={journal} text={'Therapy Journal'}/>
+
           <Table>
             <TableHead>
               <TableRow>
@@ -83,7 +60,7 @@ function CardTable(props: {store: JournalStore}): React.SFC {
         </CardContent>
       </Card>
     );
+  }
 }
 
-export default observer(withStyles(styles, { withTheme: true })(CardTable));
-// export default CardTable;
+export default CardTable;
