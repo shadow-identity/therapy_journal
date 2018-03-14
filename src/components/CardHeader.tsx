@@ -14,17 +14,18 @@ class CardHeaderFAB extends React.Component<{ store: JournalStore, text: string 
                 <Typography variant="headline">
                     {this.props.text}
                 </Typography>
-                <Button
-                    variant="fab"
-                    color="primary"
-                    className="card-header__fab"
-                    onClick={() => {
-                        this.props.store.getDay();
-                        this.props.store.calendar = false;
-                    }}
-                >
-                    <ContentAddIcon />
-                </Button>
+                <div className="card-header__fab">
+                    <Button
+                        variant="fab"
+                        color="primary"
+                        onClick={() => {
+                            this.props.store.getDay();
+                            this.props.store.calendar = false;
+                        }}
+                    >
+                        <ContentAddIcon/>
+                    </Button>
+                </div>
             </header>
         );
     }
