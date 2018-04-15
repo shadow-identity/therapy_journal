@@ -2,7 +2,7 @@ import * as React from 'react';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import {observer} from 'mobx-react';
-import ContentAddIcon from 'material-ui-icons/Add';
+import ContentAddIcon from '@material-ui/icons/Add';
 import {JournalStore} from '../data/stores';
 import './styles.css';
 

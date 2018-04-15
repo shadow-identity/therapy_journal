@@ -1,9 +1,9 @@
 import * as React from 'react';
-import SentimentVerySatisfiedIcon from 'material-ui-icons/SentimentVerySatisfied';
-import SentimentSatisfiedIcon from 'material-ui-icons/SentimentSatisfied';
-import SentimentNeutralIcon from 'material-ui-icons/SentimentNeutral';
-import SentimentDissatisfiedIcon from 'material-ui-icons/SentimentDissatisfied';
-import SentimentVeryDissatisfiedIcon from 'material-ui-icons/SentimentVeryDissatisfied';
+import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
+import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
+import SentimentNeutralIcon from '@material-ui/icons/SentimentNeutral';
+import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
+import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import {Mood} from '../data/interfaces';
 
 export const SentimentIcons = {};

@@ -2,7 +2,7 @@ import * as React from 'react';
 import Card, {CardActions, CardContent, CardHeader} from 'material-ui/Card';
 import Checkbox from 'material-ui/Checkbox';
 import TextField from 'material-ui/TextField';
-import AddIcon from 'material-ui-icons/Add';
+import AddIcon from '@material-ui/icons/Add';
 import {grey} from 'material-ui/colors';
 import {CSSProperties} from 'react';
 import {MoodComponent} from '../Mood/Mood';
@@ -12,6 +12,8 @@ import {observer} from 'mobx-react';
 import {NewListItem} from './NewListItem';
 import {FormGroup, FormControlLabel} from 'material-ui/Form';
 import Typography from 'material-ui/Typography';
+import NavigateNext from '@material-ui/icons/NavigateNext';
+import NavigateBefore from '@material-ui/icons/NavigateBefore';
 
 const grey500 = grey['500'];
 
@@ -24,7 +26,7 @@ class DayCard extends React.Component<{ store: JournalStore }, {}> {
       iconStyle: {color: grey500, fill: grey500}
     };
 
-    const drugs = day.drugs.map((drug, i) => (
+    const drugs = day.drugs.map(drug => (
       <span key={drug.name}>
       <Checkbox
         checked={drug.isTaken}
@@ -56,7 +58,7 @@ class DayCard extends React.Component<{ store: JournalStore }, {}> {
         />
         <CardContent>
           <div>
-            <Typography>Drugs</Typography>
+            <Typography variant="title">Drugs</Typography>
             <FormGroup>
               {drugs}
               <NewListItem
@@ -74,7 +76,7 @@ class DayCard extends React.Component<{ store: JournalStore }, {}> {
               />
             </FormGroup>
           </div>
-          <h3>Targets</h3>
+          <Typography variant="title">Targets</Typography>
           {tasks}
           <FormControlLabel
             control={
@@ -87,7 +89,7 @@ class DayCard extends React.Component<{ store: JournalStore }, {}> {
             label={'Add another target for today'}
           />
 
-          <h3>Thoughts and questions</h3>
+          <Typography variant="title">Thoughts and questions</Typography>
           <TextField
             placeholder={'Write your thougs or questions to your therapist here'}
             multiline={true}
@@ -96,7 +98,7 @@ class DayCard extends React.Component<{ store: JournalStore }, {}> {
             fullWidth={true}
             defaultValue={day.thoughts}
           />
-          <h3>Dreams</h3>
+          <Typography variant="title">Dreams</Typography>
           <TextField
             placeholder={'Save your dreams for further analysis'}
             multiline={true}
@@ -107,8 +109,14 @@ class DayCard extends React.Component<{ store: JournalStore }, {}> {
           />
         </CardContent>
         <CardActions>
-          <Button>Previous day</Button>
-          <Button>Next day</Button>>
+          <Button>
+            <NavigateBefore/>
+            Previous day
+          </Button>
+          <Button>
+            Next day
+            <NavigateNext/>
+          </Button>
         </CardActions>
       </Card>
     );

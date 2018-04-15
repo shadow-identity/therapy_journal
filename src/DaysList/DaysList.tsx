@@ -3,7 +3,7 @@ import {observer} from 'mobx-react';
 import Table, {TableHead, TableRow, TableCell, TableBody} from 'material-ui/Table';
 import {Drug, Task} from '../data/interfaces';
 import Card, {CardContent} from 'material-ui/Card';
-import DoneIcon from 'material-ui-icons/Done';
+import DoneIcon from '@material-ui/icons/Done';
 import {journal, JournalStore} from '../data/stores';
 import CardHeaderFAB from '../components/CardHeader';
 
@@ -13,11 +13,11 @@ class CardTable extends React.Component<{ store: JournalStore }, {}> {
     const days = this.props.store.days;
 
     function allDrugsTaken(drugs: Drug[]) {
-      return drugs.reduce((acc, current) => acc && current.isTaken, drugs[0].isTaken === true);
+      return drugs.reduce((acc, current) => acc && current.isTaken, drugs[0].isTaken);
     }
 
     function allTasksDone(tasks: Task[]) {
-      return tasks.reduce((acc, current) => acc && current.isDone, tasks[0].isDone === true);
+      return tasks.reduce((acc, current) => acc && current.isDone, tasks[0].isDone);
     }
 
     const dateRowWidth = '7em';
